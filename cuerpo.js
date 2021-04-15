@@ -23,21 +23,6 @@ function validarFormulario(e) {
     buscarGift(terminoBusqueda);
 }
 
-//no estoy utilizando esto xd
-function mostrarAlerta(mensaje) {
-    const alerta = document.createElement('p');
-    alerta.classList.add('bg-red-100', 'border-red-400', 'text-red-700', 'px-4', 'py-3', 'rounded', 'max-w-lg', 'mx-auto', 'mt-6', 'text-center');
-    alerta.innerHTML = `
-    <strong class="font-bold">Error!</strong>
-    <span class="block sm:inLine">${mensaje}</span>
-    `;
-
-    formulario.appendChild(alerta);
-
-    setTimeout(() => {
-        alerta.remove();
-    }, 3000);
-}
 
 function buscarGift(termino) {
     const key = 'WlE3mjxtoLLBArbIc71bXa9BDvqqi9k9';
@@ -106,7 +91,7 @@ function mostrarImagenes(imagenes, termino) {
         //console.log(embed_url);
         resultado.innerHTML += `
         
-            <video width="20%" height="150" autoplay="true" loop="true" src="${mp4}" ></video>
+            <video width="20%" height="150" autoplay="true" loop="true" src="${mp4}" id="gift" ></video>
         
         `
     })
@@ -171,31 +156,41 @@ function mostrarTrending(trendings) {
 
 
     resultado.innerHTML += ` 
-    <div class="flex">
-    
-    <div class="tit"><h2 id="trend"> Trending </h2></div>
-    <div class="ikon">
-            <i class="icon ion-md-trending" ></i> </div>
+    <div style= "margin: 25px 0px 50px black">
+    <div class="Container" display="flex">
+
+    <h2 width="60px" id="t"><img class="logo3" src="assets/img/grow-up.png">   Trending</h2>
     </div>
+
+    </div>
+
+    <div style= "margin: 25px 0px 50px black">
+    <div class="Container" display="flex">
+
+    <h2 width="60px" id="t"><img class="logo3" src="assets/img/rayo.png">   Artists</h2>
+    </div>
+    </div>
+
+    <div style= "margin: 25px 0px 50px black">
+    <div class="Container" display="flex">
+
+    <h2 width="60px" id="t"><img class="logo3" src="assets/img/ondas-de-audio.png">   Clips</h2>
+    </div>
+    </div>
+
 `
 
-
-
-
-
-    //Iterar sobre el arreglo de imagenes y construir el HTML
     trendings.forEach(imagen => {
         const { embed_url, title } = imagen;
         //console.log(embed_url);
         resultado.innerHTML += `
-    
-        
 
 
+<iframe class="w-1/2 p-1" src="${embed_url}"></iframe>
 
-    <iframe class="w-1/2 p-1" src="${embed_url}"></iframe>
-    
-    
-    `
+
+`
     })
+
+
 }
